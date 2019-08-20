@@ -24,10 +24,10 @@ app.use(helmet()); //Add secure headers
 app.use(cors()); //Add cors middleware for REST API
 app.use(bodyParser.json());
 
-app.use('/api/auth', authRoutes);//Auth routes
-app.use("/api/posts", authMiddleware, verifiedEmailMiddleware, postRoutes);//Post routes
-app.use('/api/admin', authMiddleware, verifiedEmailMiddleware, adminMiddleware, adminRoutes);//Admin routes
-app.use('/api', mediaManagerRoutes);//File access routes
+app.use('/v1/auth', authRoutes);//Auth routes
+app.use("/v1/posts", authMiddleware, verifiedEmailMiddleware, postRoutes);//Post routes
+app.use('/v1/admin', authMiddleware, verifiedEmailMiddleware, adminMiddleware, adminRoutes);//Admin routes
+app.use('/v1', mediaManagerRoutes);//File access routes
 
 //Override default express error handler
 app.get('*', function (req, res) {
