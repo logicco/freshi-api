@@ -18,7 +18,7 @@ exports.sendEmailAuthenticationEmail = async (email, token) => {
       content: [
         {
           type: 'text/plain',
-          value: `Click on this link to verify your email ${process.env.APP_BASE_URL}/api/auth/verify/${email}/${token}`
+          value: `Click on this link to verify your email ${process.env.APP_BASE_URL}/v1/auth/verify/${email}/${token}`
         },
       ]
     };
