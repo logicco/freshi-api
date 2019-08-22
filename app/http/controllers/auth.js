@@ -58,7 +58,7 @@ exports.register = async function registerUser(req, res) {
             password: await bcrypt.hash(req.body.password, 12),
             meta: {
                 emailVerificationToken: await crypto.randomBytes(30).toString("hex"),
-                emailVerificationTokenExp: Token.generateSafeExpDate(5) //expires in 5 mins
+                emailVerificationTokenExp: Token.generateSafeExpDate(60) //expires in 5 mins
             }
         });
 
@@ -131,7 +131,7 @@ exports.resendEmailVerificationEmail = async function resendEmailToVerifyEmail(r
 
         //Reset token and expiry date
         user.meta.emailVerificationToken = await crypto.randomBytes(30).toString("hex");
-        user.meta.emailVerificationTokenExp = Token.generateSafeExpDate(60);
+        user.meta.emailVerificationTokenExp = Token.generateSafeExpDate(60); //expires in 60 mins
 
         await user.save();
 

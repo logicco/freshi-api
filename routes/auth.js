@@ -11,7 +11,6 @@ var authValidation = require('../app/http/validation/auth');
 var authController = require("../app/http/controllers/auth");
 
 //Public
-router.get('/test',authController.test);
 router.get('/verify/:email/:token',authController.verifyEmail);
 
 //Protected: web
